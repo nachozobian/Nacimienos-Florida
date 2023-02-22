@@ -1,0 +1,3 @@
+"0","acumdcl=1:4"
+"0","for(i in 1:4){acumdcl[i]=sum(nacFLrd$Numero_de_nacimientos[which(nacFLrd$seasons==i)])}"
+"0","barplot(acumdcl, name = c(""Winter"", ""Spring"", ""Summer"", ""Fall""), col=""lightgreen"")"

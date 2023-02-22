@@ -1,0 +1,1 @@
+"0","abline(lm(nacFLrdl$Numero_de_nacimientos~nacFLrdl$dia_ciclo_lunar))"

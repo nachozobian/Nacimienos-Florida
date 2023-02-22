@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1677022083398.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "FA809EE",
+    "lastKnownWriteTime" : 5072004730997842548,
+    "last_content_update" : 1677022083398,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3297264C",
+        "caption" : "nacFL",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=nacFL&cache_key=3297264C",
+        "displayedObservations" : "1283",
+        "environment" : "",
+        "object" : "nacFL",
+        "preview" : "0",
+        "totalObservations" : "1283",
+        "variables" : "8"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

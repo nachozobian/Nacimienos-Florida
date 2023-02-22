@@ -1,0 +1,6 @@
+"0","dias=as.numeric(as.Date(nacFLr$Fecha,""%Y-%m-%d"")-as.Date(""1969-01-01"",""%Y-%m-%d""))"
+"0","#Añadimos la columna dias al dataframe"
+"0","nacFLrd=cbind(nacFLr,dias)"
+"0","#Calcular el día del ciclo lunar sabiendo que el 1-1-1969 era el 12avo dia del ciclo"
+"0","dia_ciclo_lunar=as.numeric(floor((nacFLrd$dias+12)-floor((nacFLrd$dias+12)/29.53)*29.53))"
+"0","nacFLrdl = cbind(nacFLrd, dia_ciclo_lunar)"

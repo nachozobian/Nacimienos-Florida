@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1677019255069.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4DA5420",
+    "lastKnownWriteTime" : 2466321629217909346,
+    "last_content_update" : 1677019255069,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "EE6D9535",
+        "caption" : "nacFLrd",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=nacFLrd&cache_key=EE6D9535",
+        "displayedObservations" : "1283",
+        "environment" : "",
+        "object" : "nacFLrd",
+        "preview" : "0",
+        "totalObservations" : "1283",
+        "variables" : "5"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,1 @@
+"0","abline(lm(nacFLrd$Numero_de_nacimientos~nacFLrd$seasons))"

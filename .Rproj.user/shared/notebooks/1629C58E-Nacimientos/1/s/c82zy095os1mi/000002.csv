@@ -1,0 +1,2 @@
+"0","nacFL = filter(nac, Estado==""FL"") #Filtramos la información"
+"0","nacFLr = select(nacFL, Fecha, Numero_de_nacimientos)"

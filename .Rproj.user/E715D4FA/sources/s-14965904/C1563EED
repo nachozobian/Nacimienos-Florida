@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1677010540485.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C1563EED",
+    "lastKnownWriteTime" : 1677058983,
+    "last_content_update" : 1677058983041,
+    "path" : "C:/Users/PC/Desktop/Comp.Mat/Nacimientos/Nacimientos.Rmd",
+    "project_path" : "Nacimientos.Rmd",
+    "properties" : {
+        "cursorPosition" : "205,138",
+        "last_setup_crc32" : "14965904bb338d19",
+        "scrollLine" : "195"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

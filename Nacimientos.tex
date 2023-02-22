@@ -1,0 +1,490 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={NacimientosFlorida},
+  pdfauthor={Nacho Zobian Massetti},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{NacimientosFlorida}
+\author{Nacho Zobian Massetti}
+\date{2023-02-21}
+
+\begin{document}
+\maketitle
+
+\hypertarget{natalidad-en-el-estado-de-florida}{%
+\subsection{Natalidad en el estado de
+Florida}\label{natalidad-en-el-estado-de-florida}}
+
+En la base de datos de Nac.csv se encuentran los datos de los
+nacimientos por dia del año en cada uno de los distintos estados de
+estados unidos. El reto es, en primer lugar determinar si el numero de
+nacimiento en los dias de luna llena en el estado de Florida (FL)
+difiere de alguna forma con el resto de días.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Leemos el fichero Nac.csv}
+\NormalTok{nac }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"Nac.csv"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{sep=}\StringTok{";"}\NormalTok{)}
+\CommentTok{\#Cabeceras}
+\FunctionTok{names}\NormalTok{(nac) }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Numero\_de\_orden"}\NormalTok{, }\StringTok{"Estado"}\NormalTok{, }\StringTok{"Año"}\NormalTok{, }\StringTok{"Mes"}\NormalTok{, }\StringTok{"Dia"}\NormalTok{, }\StringTok{"Fecha"}\NormalTok{,}
+               \StringTok{"Dia\_de\_la\_semana"}\NormalTok{, }\StringTok{"Numero\_de\_nacimientos"}\NormalTok{)}
+\CommentTok{\#Primeros 100 Estados}
+\NormalTok{Estados }\OtherTok{=} \FunctionTok{unique}\NormalTok{(nac}\SpecialCharTok{$}\NormalTok{Estado)}
+\CommentTok{\#Florida (FL) es el estado numero 10 en orden alfabético}
+\NormalTok{Estados[}\DecValTok{10}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "FL"
+\end{verbatim}
+
+El estudio ha de hacerse exclusivamente en el estado de florida por lo
+que no tiene sentido mantener toda la base de datos con los demás
+estados
+
+Además, solo necesitamos la fecha y el numero de nacimientos en cada día
+por lo que filtramos también (función select) por estos dos parámetros.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nacFL }\OtherTok{=} \FunctionTok{filter}\NormalTok{(nac, Estado}\SpecialCharTok{==}\StringTok{"FL"}\NormalTok{) }\CommentTok{\#Filtramos la información}
+\NormalTok{nacFLr }\OtherTok{=} \FunctionTok{select}\NormalTok{(nacFL, Fecha, Numero\_de\_nacimientos)}
+\end{Highlighting}
+\end{Shaded}
+
+La base de datos contiene los nacimientos desde el 1/1/1969 Se necesita
+tener identificados que días del ciclo lunar corresponden a qué días del
+calendario -\textgreater{} Para ello, y teniendo en cuenta que el
+periodo en días del ciclo lunar no es un número entero, se usa un
+equivalente a la función módulo que hace uso de ``floor'' (aunque en
+realidad podría también utilizar ``round''). El hecho de que el periodo
+del ciclo lunar sea de 29.53 conlleva necesariamente que haya ciclos de
+30 días de duración y otros de tan solo 29. Hemos de tener en cuenta
+esto último para la interpretación de los resultados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dias}\OtherTok{=}\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(nacFLr}\SpecialCharTok{$}\NormalTok{Fecha,}\StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{)}\SpecialCharTok{{-}}\FunctionTok{as.Date}\NormalTok{(}\StringTok{"1969{-}01{-}01"}\NormalTok{,}\StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{))}
+\CommentTok{\#Añadimos la columna dias al dataframe}
+\NormalTok{nacFLrd}\OtherTok{=}\FunctionTok{cbind}\NormalTok{(nacFLr,dias)}
+\CommentTok{\#Calcular el día del ciclo lunar sabiendo que el 1{-}1{-}1969 era el 12avo dia del ciclo}
+\NormalTok{dia\_ciclo\_lunar}\OtherTok{=}\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{floor}\NormalTok{((nacFLrd}\SpecialCharTok{$}\NormalTok{dias}\SpecialCharTok{+}\DecValTok{12}\NormalTok{)}\SpecialCharTok{{-}}\FunctionTok{floor}\NormalTok{((nacFLrd}\SpecialCharTok{$}\NormalTok{dias}\SpecialCharTok{+}\DecValTok{12}\NormalTok{)}\SpecialCharTok{/}\FloatTok{29.53}\NormalTok{)}\SpecialCharTok{*}\FloatTok{29.53}\NormalTok{))}
+\NormalTok{nacFLrdl }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(nacFLrd, dia\_ciclo\_lunar)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{recta-de-regresiuxf3n}{%
+\subsection{Recta de Regresión}\label{recta-de-regresiuxf3n}}
+
+Calculamos la recta de regresión del Número de nacimientos sobre el dia
+del ciclo lunar para ver si existe algún tipo de relación lineal entre
+las dos variables
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lm}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos}\SpecialCharTok{\textasciitilde{}}\NormalTok{nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_ciclo\_lunar)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = nacFLrdl$Numero_de_nacimientos ~ nacFLrdl$dia_ciclo_lunar)
+## 
+## Coefficients:
+##              (Intercept)  nacFLrdl$dia_ciclo_lunar  
+##                303.30686                   0.05078
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_ciclo\_lunar, nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos}\SpecialCharTok{\textasciitilde{}}\NormalTok{nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_ciclo\_lunar))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+Viendo la gráfica superior podemos empezar a sacar conclusiones: no
+parece haber ninguna relacion entre el dia del ciclo lunar y el numero
+de nacimientos en el estado de Florida o al menos esa relación no es
+lineal. Esta conclusión se enfatiza si vemos el coeficiente de
+correlación de Pearson.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Pearson }\OtherTok{=} \FunctionTok{cor}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos,nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_ciclo\_lunar)}
+\NormalTok{Pearson}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.01029156
+\end{verbatim}
+
+Una forma de llegar a conclusiones de una forma más rápida incluso sería
+mirar el total de nacimientos por día del ciclo lunar y analizar si hay
+algún día que resalte sobre el resto.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Vector de sumas}
+\NormalTok{acumdcl}\OtherTok{=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{30}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{30}\NormalTok{)\{acumdcl[i]}\OtherTok{=}\FunctionTok{sum}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos[}\FunctionTok{which}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_ciclo\_lunar}\SpecialCharTok{==}\NormalTok{i}\DecValTok{{-}1}\NormalTok{)])\}}
+\FunctionTok{barplot}\NormalTok{(acumdcl)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\hypertarget{por-quuxe9-hay-un-duxeda-distinto-al-resto-tienen-razuxf3n-los-muxe9dicos-y-es-verdad-que-nacen-menos-niuxf1os-los-duxedas-30-de-cada-ciclo-lunar}{%
+\subsubsection{Por qué hay un día distinto al resto? Tienen razón los
+médicos y es verdad que nacen menos niños los días 30 de cada ciclo
+lunar?}\label{por-quuxe9-hay-un-duxeda-distinto-al-resto-tienen-razuxf3n-los-muxe9dicos-y-es-verdad-que-nacen-menos-niuxf1os-los-duxedas-30-de-cada-ciclo-lunar}}
+
+Es cierto, hay un dia (el 30 de cada ciclo lunar) que tiene
+significativamente menos nacimientos. Pero ello no se debe a que esos
+dias nazcan menos niños sino que tiene que ver con el hecho de que el
+periodo del ciclo lunar no es un número entero por lo que no todos los
+ciclos lunares ocupan 30 días naturales.
+
+\#Estudio con el día de la semana. El 1/1/1969 fue miércoles. Sabemos
+que en 1 semana hay 7 días por lo que aplicaremos una operación modular
+para añadir una columna que indique (siendo 0 el lunes y 6 el domingo)
+que día de la semana corresponde a cada día del calendario desde 1969.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Calcular el día del ciclo lunar sabiendo que el 1{-}1{-}1969 era el 12avo dia del ciclo}
+\NormalTok{dia\_semana}\OtherTok{=}\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{floor}\NormalTok{((nacFLrd}\SpecialCharTok{$}\NormalTok{dias}\SpecialCharTok{+}\DecValTok{2}\NormalTok{)}\SpecialCharTok{{-}}\FunctionTok{floor}\NormalTok{((nacFLrd}\SpecialCharTok{$}\NormalTok{dias}\SpecialCharTok{+}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\DecValTok{7}\NormalTok{)}\SpecialCharTok{*}\DecValTok{7}\NormalTok{))}
+\NormalTok{nacFLrdl }\OtherTok{=} \FunctionTok{cbind}\NormalTok{(nacFLrd, dia\_semana)}
+\end{Highlighting}
+\end{Shaded}
+
+La hipótesis de la que partimos es que el día de la semana \textbf{NO}
+afecta al número de nacimientos. De ser así debería haberse visto
+reflejado en el apartado anterior puesto que, en cada ciclo lunar hay
+29.53/7 = 4.21 semanas. Si hubiese algunos días en los que hay más
+nacimientos que otros veríamos aproximadamente unos 4 periodos de una
+función periodica de periodo 7 al representar el barplot anterior y no
+parece ser el caso. Tampoco podemos apresurarnos y tomar
+precipitadamente un veredicto con esta primera intuición pero parece ser
+un buen punto de partida.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_semana, nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos}\SpecialCharTok{\textasciitilde{}}\NormalTok{nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_semana))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+Sin embargo, cuando se dibuja la recta de regresión podemos observar
+como parece haber cierta tendencia a haber menos nacimientos hacia el
+final de la semana. Comprobemos el coeficiente de linealidad de Pearson.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Pearson }\OtherTok{=} \FunctionTok{cor}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos,nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_semana)}
+\NormalTok{Pearson}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.3874783
+\end{verbatim}
+
+Un coeficiente de linealidad de Pearson de -0.38 indica una correlación
+negativa. Y, aunque si bien es verdad que hay una aparente tendencia
+contraria de las dos variables el coeficiente de linealidad no parece
+ser lo suficientemente elevado (en valor absoluto) como para derrumbar
+nuestra hipótesis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{acumdcl}\OtherTok{=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{7}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{7}\NormalTok{)\{acumdcl[i]}\OtherTok{=}\FunctionTok{sum}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos[}\FunctionTok{which}\NormalTok{(nacFLrdl}\SpecialCharTok{$}\NormalTok{dia\_semana}\SpecialCharTok{==}\NormalTok{i}\DecValTok{{-}1}\NormalTok{)])\}}
+\FunctionTok{barplot}\NormalTok{(acumdcl, }\AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Lunes"}\NormalTok{, }\StringTok{"Martes"}\NormalTok{, }\StringTok{"Miercoles"}\NormalTok{, }\StringTok{"Jueves"}\NormalTok{, }\StringTok{"Viernes"}\NormalTok{,}\StringTok{"Sabado"}\NormalTok{, }\StringTok{"Domingo"}\NormalTok{), }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+De nuevo se muestra lo observado en la gráfica anterior. Pareciera que
+los sábados y domíngos se tiene un menor número de nacimientos que el
+resto de días. En este punto parece que nuestra hipótesis empieza a
+tambalearse puesto que el número de niños que nacieron en un domingo fue
+de 48723 mientras que en viernes fueron 57101 niños. Una diferencia de
+9429 niños.
+
+Haciendo un poco de investigación encontramos los siguientes dos
+artículos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \url{https://www.lasexta.com/programas/lasexta-clave/que-nacen-menos-ninos-fines-semana-dias-festivos_2023011163bf339d8db6350001eeb36b.html\#}:\textasciitilde:text=Los\%20días\%20festivos\%20y\%20fines,el\%20de\%20Nochebuena\%20o\%20Navidad.
+\item
+  \url{https://pubmed.ncbi.nlm.nih.gov/17891531/\#}:\textasciitilde:text=While\%20most\%20of\%20this\%20weekend,(up\%20to\%20-14.5\%25).
+\end{enumerate}
+
+El primero es un artículo de ``La SextaClave'' que explica el por qué
+hay menos niños nacidos los festivos y fines de semana en España
+-\textgreater{} La causa parece estar en el número de partos inducidos
+al tener en domingos y festivos un menor número de trabajadores se
+tienen menos partos inducidos y por tanto menos nacimientos en domingos.
+Casualmente en España a mediados de los 60 y durante la década de los 70
+se empezo a tener un mayor numero de partos inducidos por los avances en
+los centros hospitalarios.
+
+El segundo articulo hace referencia a la situacion en Suiza y comenta
+que, aunque sigue habiendo un menor número de nacimientos los domingos,
+parece haber cierta tendencia a que el numero de nacimientos decrezca
+aún más los Sábados.
+
+\#Estudio con la estación del año. De nuevo, la hipótesis de partida
+será que \textbf{NO} hay diferencia entre las distintas estaciones del
+año.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{getSeason }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(DATES) \{}
+\NormalTok{    WS }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2012{-}12{-}15"}\NormalTok{, }\AttributeTok{format =} \StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{) }\CommentTok{\# Winter Solstice}
+\NormalTok{    SE }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2012{-}3{-}15"}\NormalTok{,  }\AttributeTok{format =} \StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{) }\CommentTok{\# Spring Equinox}
+\NormalTok{    SS }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2012{-}6{-}15"}\NormalTok{,  }\AttributeTok{format =} \StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{) }\CommentTok{\# Summer Solstice}
+\NormalTok{    FE }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(}\StringTok{"2012{-}9{-}15"}\NormalTok{,  }\AttributeTok{format =} \StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{) }\CommentTok{\# Fall Equinox}
+
+    \CommentTok{\# Convierte todos los años a una fecha en 2012}
+    \CommentTok{\#2012 es un buen año para hacer esto porque es bisiesto}
+\NormalTok{    d }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(}\FunctionTok{strftime}\NormalTok{(DATES, }\AttributeTok{format=}\StringTok{"2012{-}\%m{-}\%d"}\NormalTok{))}
+
+    \FunctionTok{ifelse}\NormalTok{ (d }\SpecialCharTok{\textgreater{}=}\NormalTok{ WS }\SpecialCharTok{|}\NormalTok{ d }\SpecialCharTok{\textless{}}\NormalTok{ SE, }\DecValTok{1}\NormalTok{, }\CommentTok{\#1 = Winter}
+      \FunctionTok{ifelse}\NormalTok{ (d }\SpecialCharTok{\textgreater{}=}\NormalTok{ SE }\SpecialCharTok{\&}\NormalTok{ d }\SpecialCharTok{\textless{}}\NormalTok{ SS, }\DecValTok{2}\NormalTok{,}\CommentTok{\#2 = Spring}
+        \FunctionTok{ifelse}\NormalTok{ (d }\SpecialCharTok{\textgreater{}=}\NormalTok{ SS }\SpecialCharTok{\&}\NormalTok{ d }\SpecialCharTok{\textless{}}\NormalTok{ FE, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{))) }\CommentTok{\#3 = Summer, 4 = Fall}
+\NormalTok{\}}
+
+\NormalTok{seasons }\OtherTok{\textless{}{-}} \FunctionTok{getSeason}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(nacFLr}\SpecialCharTok{$}\NormalTok{Fecha,}\StringTok{"\%Y{-}\%m{-}\%d"}\NormalTok{))}
+\NormalTok{nacFLrd}\OtherTok{=}\FunctionTok{cbind}\NormalTok{(nacFLrdl,seasons)}
+
+
+\FunctionTok{plot}\NormalTok{(nacFLrd}\SpecialCharTok{$}\NormalTok{seasons, nacFLrd}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(nacFLrd}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos}\SpecialCharTok{\textasciitilde{}}\NormalTok{nacFLrd}\SpecialCharTok{$}\NormalTok{seasons))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Pearson }\OtherTok{=} \FunctionTok{cor}\NormalTok{(nacFLrd}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos,nacFLrd}\SpecialCharTok{$}\NormalTok{seasons)}
+\NormalTok{Pearson}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2864479
+\end{verbatim}
+
+Tanto en la gráfica como en el coeficiente de linealidad de Pearson
+parece haber una dependencia positiva. Más niños nacen a final de año
+que a principio del mismo. En el siguiente link hay información de
+interés:
+\url{https://www.livescience.com/32728-baby-month-is-almost-here-.html\#}:\textasciitilde:text=In\%20the\%20United\%20States\%2C\%20the,Health\%20Statistics\%2C\%20told\%20Live\%20Science.
+
+Parece ser que es en Agosto y en Julio (Verano) cuando más bebés nacen
+en Estados Unidos -\textgreater{}
+
+``A 1990 study in the Journal of Biological Rhythms(opens in new tab)
+suggested the seasonality of human births may be linked with local
+temperature and day length. The extent to which temperature and day
+length may or may not change seasonally over the year depends in part on
+latitude, Martinez and Bakker noted. These environmental changes may
+influence the frequency of sex or how fertile men or women are, they
+noted. However, in their 2014 study, they note many other factors may
+play a role as well, such as income, culture, holidays and rainfall,
+making it challenging discussing whether and in what way temperature or
+day length might affect human births.''
+
+Sin embargo, Florida además de no tener un clima demasiado cambiante con
+la época del año, es uno de los estados con mayor poder adquisitivo de
+estados unidos. De hecho, según
+\url{https://www.lanacion.com.ar/estados-unidos/por-que-las-personas-de-mayor-poder-adquisitivo-en-estados-unidos-eligen-mudarse-al-famoso-sun-belt-nid16082022/}
+es el estado con mayor número de hogares con altos ingresos de Estados
+Unidos por lo que no deberíamos ver demasiado cambio en la natalidad y
+en caso de haberlo no deberían tener sus causas en lo que se explica en
+el artículo anteriormente citado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{acumdcl}\OtherTok{=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{)\{acumdcl[i]}\OtherTok{=}\FunctionTok{sum}\NormalTok{(nacFLrd}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos[}\FunctionTok{which}\NormalTok{(nacFLrd}\SpecialCharTok{$}\NormalTok{seasons}\SpecialCharTok{==}\NormalTok{i)])\}}
+\FunctionTok{barplot}\NormalTok{(acumdcl, }\AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Winter"}\NormalTok{, }\StringTok{"Spring"}\NormalTok{, }\StringTok{"Summer"}\NormalTok{, }\StringTok{"Fall"}\NormalTok{), }\AttributeTok{col=}\StringTok{"lightgreen"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-14-1.pdf}
+Efectivamente, no parece haber un mayor número de nacimientos en los
+meses de verano.
+
+\hypertarget{anuxe1lisis-de-los-meses.}{%
+\subsection{Análisis de los meses.}\label{anuxe1lisis-de-los-meses.}}
+
+Según los datos del articulo citado anteriormente deberían ser los meses
+de Agosto y Julio los que tengan un mayor número de nacimientos. Sin
+embargo seguimos siendo escépticos y nuestra hipótesis de partida será
+que \textbf{NO} hay diferencia de nacimiento entre los distintos meses
+del año
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(nacFL}\SpecialCharTok{$}\NormalTok{Mes, nacFL}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos)}
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(nacFL}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos}\SpecialCharTok{\textasciitilde{}}\NormalTok{nacFL}\SpecialCharTok{$}\NormalTok{Mes))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{acumdcl}\OtherTok{=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{)\{acumdcl[i]}\OtherTok{=}\FunctionTok{sum}\NormalTok{(nacFL}\SpecialCharTok{$}\NormalTok{Numero\_de\_nacimientos[}\FunctionTok{which}\NormalTok{(nacFL}\SpecialCharTok{$}\NormalTok{Mes}\SpecialCharTok{==}\NormalTok{i)])\}}
+\FunctionTok{barplot}\NormalTok{(acumdcl, }\AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Enero"}\NormalTok{, }\StringTok{"Febrero"}\NormalTok{, }\StringTok{"Marzo"}\NormalTok{, }\StringTok{"Abril"}\NormalTok{, }\StringTok{"Mayo"}\NormalTok{, }\StringTok{"Junio"}\NormalTok{, }
+                          \StringTok{"Julio"}\NormalTok{, }\StringTok{"Agosto"}\NormalTok{, }\StringTok{"Septiembre"}\NormalTok{, }\StringTok{"Octubre"}\NormalTok{, }\StringTok{"Noviembre"}\NormalTok{, }\StringTok{"Diciembre"}\NormalTok{),}\AttributeTok{col=}\StringTok{"lightblue"}\NormalTok{, }\AttributeTok{las =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Nacimientos_files/figure-latex/unnamed-chunk-16-1.pdf}
+Pareciera ser que en enero el número de nacimientos en enero es
+superior.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Media de los meses}
+\NormalTok{admes }\OtherTok{=}\NormalTok{acumdcl[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]}
+\NormalTok{medi}\OtherTok{=}\FunctionTok{sum}\NormalTok{(admes)}\SpecialCharTok{/}\DecValTok{12}
+\CommentTok{\# Enero vs Media}
+\NormalTok{(acumdcl[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{/}\NormalTok{medi}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100} 
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16.81446
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Julio vs Media}
+\NormalTok{(acumdcl[}\DecValTok{7}\NormalTok{]}\SpecialCharTok{/}\NormalTok{medi}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100} 
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -10.45722
+\end{verbatim}
+
+En el mes de enero parece haber un 16.81 \% más de nacimientos que la
+meda. Mientras que en el mes de julio hay un 10\% menos de nacimientos
+
+\end{document}

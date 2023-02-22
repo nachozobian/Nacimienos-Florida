@@ -1,0 +1,206 @@
+---
+title: "NacimientosFlorida"
+author: "Nacho Zobian Massetti"
+date: '2023-02-21'
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Natalidad en el estado de Florida
+
+En la base de datos de Nac.csv se encuentran los datos de los nacimientos por dia del año en cada uno de los distintos estados de estados unidos. El reto es, en primer lugar determinar si el numero de nacimiento en los dias de luna llena en el estado de Florida (FL) difiere de alguna forma con el resto de días. 
+
+```{r Fichero}
+#Leemos el fichero Nac.csv
+nac = read.csv("Nac.csv", header = FALSE, sep=";")
+#Cabeceras
+names(nac) = c("Numero_de_orden", "Estado", "Año", "Mes", "Dia", "Fecha",
+               "Dia_de_la_semana", "Numero_de_nacimientos")
+#Primeros 100 Estados
+Estados = unique(nac$Estado)
+#Florida (FL) es el estado numero 10 en orden alfabético
+Estados[10]
+```
+El estudio ha de hacerse exclusivamente en el estado de florida por lo que no tiene sentido mantener toda la base de datos con los demás estados
+
+```{r, include = FALSE }
+necesarios <- c("dplyr")
+if (length(setdiff(necesarios, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(necesarios, rownames(installed.packages())))  
+}
+library(dplyr)
+```
+
+Además, solo necesitamos la fecha y el numero de nacimientos en cada día por lo que filtramos también (función select) por estos dos parámetros.
+
+```{r}
+nacFL = filter(nac, Estado=="FL") #Filtramos la información
+nacFLr = select(nacFL, Fecha, Numero_de_nacimientos)
+```
+
+La base de datos contiene los nacimientos desde el 1/1/1969 
+Se necesita tener identificados que días del ciclo lunar corresponden a qué días del calendario -> Para ello, y teniendo en cuenta que el periodo en días del ciclo lunar no es un número entero, se usa un equivalente a la función módulo que hace uso de "floor" (aunque en realidad podría también utilizar "round").
+El hecho de que el periodo del ciclo lunar sea de 29.53 conlleva necesariamente que haya ciclos de 30 días de duración y otros de tan solo 29. Hemos de tener en cuenta esto último para la interpretación de los resultados.
+```{r}
+dias=as.numeric(as.Date(nacFLr$Fecha,"%Y-%m-%d")-as.Date("1969-01-01","%Y-%m-%d"))
+#Añadimos la columna dias al dataframe
+nacFLrd=cbind(nacFLr,dias)
+#Calcular el día del ciclo lunar sabiendo que el 1-1-1969 era el 12avo dia del ciclo
+dia_ciclo_lunar=as.numeric(floor((nacFLrd$dias+12)-floor((nacFLrd$dias+12)/29.53)*29.53))
+nacFLrdl = cbind(nacFLrd, dia_ciclo_lunar)
+```
+
+
+## Recta de Regresión
+Calculamos la recta de regresión del Número de nacimientos sobre el dia del ciclo lunar para ver si existe algún tipo de relación lineal entre las dos variables
+```{r}
+lm(nacFLrdl$Numero_de_nacimientos~nacFLrdl$dia_ciclo_lunar)
+```
+
+```{r}
+plot(nacFLrdl$dia_ciclo_lunar, nacFLrdl$Numero_de_nacimientos)
+abline(lm(nacFLrdl$Numero_de_nacimientos~nacFLrdl$dia_ciclo_lunar))
+```
+
+Viendo la gráfica superior podemos empezar a sacar conclusiones: no parece haber ninguna relacion entre el dia del ciclo lunar y el numero de nacimientos en el estado de Florida o al menos esa relación no es lineal. Esta conclusión se enfatiza si vemos el coeficiente de correlación de Pearson.
+
+```{r}
+Pearson = cor(nacFLrdl$Numero_de_nacimientos,nacFLrdl$dia_ciclo_lunar)
+Pearson
+```
+
+Una forma de llegar a conclusiones de una forma más rápida incluso sería mirar el total de nacimientos por día del ciclo lunar y analizar si hay algún día que resalte sobre el resto.
+```{r}
+# Vector de sumas
+acumdcl=1:30
+for(i in 1:30){acumdcl[i]=sum(nacFLrdl$Numero_de_nacimientos[which(nacFLrdl$dia_ciclo_lunar==i-1)])}
+barplot(acumdcl)
+```
+
+### Por qué hay un día distinto al resto? Tienen razón los médicos y es verdad que nacen menos niños los días 30 de cada ciclo lunar?
+Es cierto, hay un dia (el 30 de cada ciclo lunar) que tiene significativamente menos nacimientos. Pero ello no se debe a que esos dias nazcan menos niños sino que tiene que ver con el hecho de que el periodo del ciclo lunar no es un número entero por lo que no todos los ciclos lunares ocupan 30 días naturales. 
+
+
+#Estudio con el día de la semana.
+El 1/1/1969 fue miércoles. Sabemos que en 1 semana hay 7 días por lo que aplicaremos una operación modular para añadir una columna que indique (siendo 0 el lunes y 6 el domingo) que día de la semana corresponde a cada día del calendario desde 1969.
+
+```{r}
+#Calcular el día del ciclo lunar sabiendo que el 1-1-1969 era el 12avo dia del ciclo
+dia_semana=as.numeric(floor((nacFLrd$dias+2)-floor((nacFLrd$dias+2)/7)*7))
+nacFLrdl = cbind(nacFLrd, dia_semana)
+```
+
+La hipótesis de la que partimos es que el día de la semana **NO** afecta al número de nacimientos. De ser así debería haberse visto reflejado en el apartado anterior puesto que, en cada ciclo lunar hay 29.53/7 = 4.21 semanas.
+Si hubiese algunos días en los que hay más nacimientos que otros veríamos aproximadamente unos 4 periodos de una función periodica de periodo 7 al representar el barplot anterior y no parece ser el caso. Tampoco podemos apresurarnos y tomar precipitadamente un veredicto con esta primera intuición pero parece ser un buen punto de partida.
+
+```{r}
+plot(nacFLrdl$dia_semana, nacFLrdl$Numero_de_nacimientos)
+abline(lm(nacFLrdl$Numero_de_nacimientos~nacFLrdl$dia_semana))
+```
+
+Sin embargo, cuando se dibuja la recta de regresión podemos observar como parece haber cierta tendencia a haber menos nacimientos hacia el final de la semana. Comprobemos el coeficiente de linealidad de Pearson.
+
+```{r}
+Pearson = cor(nacFLrdl$Numero_de_nacimientos,nacFLrdl$dia_semana)
+Pearson
+```
+Un coeficiente de linealidad de Pearson de -0.38 indica una correlación negativa. Y, aunque si bien es verdad que hay una aparente tendencia contraria de las dos variables el coeficiente de linealidad no parece ser lo suficientemente elevado (en valor absoluto) como para derrumbar nuestra hipótesis.
+
+```{r}
+acumdcl=1:7
+for(i in 1:7){acumdcl[i]=sum(nacFLrdl$Numero_de_nacimientos[which(nacFLrdl$dia_semana==i-1)])}
+barplot(acumdcl, name = c("Lunes", "Martes", "Miercoles", "Jueves", "Viernes","Sabado", "Domingo"), col = "red")
+```
+
+De nuevo se muestra lo observado en la gráfica anterior. Pareciera que los sábados y domíngos se tiene un menor número de nacimientos que el resto de días. En este punto parece que nuestra hipótesis empieza a tambalearse puesto que el número de niños que nacieron en un domingo fue de 48723 mientras que en viernes fueron 57101 niños. Una diferencia de 9429 niños.
+
+Haciendo un poco de investigación encontramos los siguientes dos artículos:
+
+1. https://www.lasexta.com/programas/lasexta-clave/que-nacen-menos-ninos-fines-semana-dias-festivos_2023011163bf339d8db6350001eeb36b.html#:~:text=Los%20días%20festivos%20y%20fines,el%20de%20Nochebuena%20o%20Navidad.
+2. https://pubmed.ncbi.nlm.nih.gov/17891531/#:~:text=While%20most%20of%20this%20weekend,(up%20to%20-14.5%25).
+
+El primero es un artículo de "La SextaClave" que explica el por qué hay menos niños nacidos los festivos y fines de semana en España -> La causa parece estar en el número de partos inducidos al tener en domingos y festivos un menor número de trabajadores se tienen menos partos inducidos y por tanto menos nacimientos en domingos. Casualmente en España a mediados de los 60 y durante la década de los 70 se empezo a tener un mayor numero de partos inducidos por los avances en los centros hospitalarios.
+
+El segundo articulo hace referencia a la situacion en Suiza y comenta que, aunque sigue habiendo un menor número de nacimientos los domingos, parece haber cierta tendencia a que el numero de nacimientos decrezca aún más los Sábados.
+
+
+#Estudio con la estación del año.
+De nuevo, la hipótesis de partida será que **NO** hay diferencia entre las distintas estaciones del año.
+
+```{r}
+getSeason <- function(DATES) {
+    WS <- as.Date("2012-12-15", format = "%Y-%m-%d") # Winter Solstice
+    SE <- as.Date("2012-3-15",  format = "%Y-%m-%d") # Spring Equinox
+    SS <- as.Date("2012-6-15",  format = "%Y-%m-%d") # Summer Solstice
+    FE <- as.Date("2012-9-15",  format = "%Y-%m-%d") # Fall Equinox
+
+    # Convierte todos los años a una fecha en 2012
+    #2012 es un buen año para hacer esto porque es bisiesto
+    d <- as.Date(strftime(DATES, format="2012-%m-%d"))
+
+    ifelse (d >= WS | d < SE, 1, #1 = Winter
+      ifelse (d >= SE & d < SS, 2,#2 = Spring
+        ifelse (d >= SS & d < FE, 3, 4))) #3 = Summer, 4 = Fall
+}
+
+seasons <- getSeason(as.Date(nacFLr$Fecha,"%Y-%m-%d"))
+nacFLrd=cbind(nacFLrdl,seasons)
+
+
+plot(nacFLrd$seasons, nacFLrd$Numero_de_nacimientos)
+abline(lm(nacFLrd$Numero_de_nacimientos~nacFLrd$seasons))
+```
+
+```{r}
+Pearson = cor(nacFLrd$Numero_de_nacimientos,nacFLrd$seasons)
+Pearson
+```
+
+Tanto en la gráfica como en el coeficiente de linealidad de Pearson parece haber una dependencia positiva. Más niños nacen a final de año que a principio del mismo. En el siguiente link hay información de interés:
+https://www.livescience.com/32728-baby-month-is-almost-here-.html#:~:text=In%20the%20United%20States%2C%20the,Health%20Statistics%2C%20told%20Live%20Science.
+
+Parece ser que es en Agosto y en Julio (Verano) cuando más bebés nacen en Estados Unidos -> 
+
+"A 1990 study in the Journal of Biological Rhythms(opens in new tab) suggested the seasonality of human births may be linked with local temperature and day length. The extent to which temperature and day length may or may not change seasonally over the year depends in part on latitude, Martinez and Bakker noted. These environmental changes may influence the frequency of sex or how fertile men or women are, they noted. However, in their 2014 study, they note many other factors may play a role as well, such as income, culture, holidays and rainfall, making it challenging discussing whether and in what way temperature or day length might affect human births."
+
+Sin embargo, Florida además de no tener un clima demasiado cambiante con la época del año, es uno de los estados con mayor poder adquisitivo de estados unidos. De hecho, según https://www.lanacion.com.ar/estados-unidos/por-que-las-personas-de-mayor-poder-adquisitivo-en-estados-unidos-eligen-mudarse-al-famoso-sun-belt-nid16082022/ es el estado con mayor número de hogares con altos ingresos de Estados Unidos por lo que no deberíamos ver demasiado cambio en la natalidad y en caso de haberlo no deberían tener sus causas en lo que se explica en el artículo anteriormente citado.
+
+```{r}
+acumdcl=1:4
+for(i in 1:4){acumdcl[i]=sum(nacFLrd$Numero_de_nacimientos[which(nacFLrd$seasons==i)])}
+barplot(acumdcl, name = c("Winter", "Spring", "Summer", "Fall"), col="lightgreen")
+```
+Efectivamente, no parece haber un mayor número de nacimientos en los meses de verano.
+
+
+## Análisis de los meses.
+Según los datos del articulo citado anteriormente deberían ser los meses de Agosto y Julio los que tengan un mayor número de nacimientos. Sin embargo seguimos siendo escépticos y nuestra hipótesis de partida será que **NO** hay diferencia de nacimiento entre los distintos meses del año
+
+```{r}
+plot(nacFL$Mes, nacFL$Numero_de_nacimientos)
+abline(lm(nacFL$Numero_de_nacimientos~nacFL$Mes))
+```
+
+```{r}
+acumdcl=1:12
+for(i in 1:12){acumdcl[i]=sum(nacFL$Numero_de_nacimientos[which(nacFL$Mes==i)])}
+barplot(acumdcl, name = c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                          "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"),col="lightblue", las = 2)
+```
+Pareciera ser que en enero el número de nacimientos en enero es superior.
+```{r}
+# Media de los meses
+admes =acumdcl[1:12]
+medi=sum(admes)/12
+# Enero vs Media
+(acumdcl[1]/medi-1)*100 
+#Julio vs Media
+(acumdcl[7]/medi-1)*100 
+```
+En el mes de enero parece haber un 16.81 % más de nacimientos que la meda. Mientras que en el mes de julio hay un 10% menos de nacimientos

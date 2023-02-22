@@ -1,0 +1,4 @@
+"0","# Vector de sumas"
+"0","acumdcl=1:30"
+"0","for(i in 1:30){acumdcl[i]=sum(nacFLrdl$Numero_de_nacimientos[which(nacFLrdl$dia_ciclo_lunar==i-1)])}"
+"0","barplot(acumdcl)"

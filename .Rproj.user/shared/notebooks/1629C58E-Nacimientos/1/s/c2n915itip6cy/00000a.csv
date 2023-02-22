@@ -1,0 +1,1 @@
+"0","abline(lm(nacFL$Numero_de_nacimientos~nacFL$Mes))"

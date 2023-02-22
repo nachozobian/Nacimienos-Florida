@@ -1,0 +1,19 @@
+"0","necesarios <- c(""dplyr"")"
+"0","if (length(setdiff(necesarios, rownames(installed.packages()))) > 0) {"
+"0","  install.packages(setdiff(necesarios, rownames(installed.packages())))  "
+"0","}"
+"0","library(dplyr)"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"

@@ -1,0 +1,4 @@
+"0","acumdcl=1:12"
+"0","for(i in 1:12){acumdcl[i]=sum(nacFL$Numero_de_nacimientos[which(nacFL$Mes==i)])}"
+"0","barplot(acumdcl, name = c(""Enero"", ""Febrero"", ""Marzo"", ""Abril"", ""Mayo"", ""Junio"", "
+"0","                          ""Julio"", ""Agosto"", ""Septiembre"", ""Octubre"", ""Noviembre"", ""Diciembre""),col=""lightblue"", las = 2)"

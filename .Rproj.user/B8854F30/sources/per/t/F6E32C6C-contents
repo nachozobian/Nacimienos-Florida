@@ -1,0 +1,36 @@
+---
+title: "NacimientosFlorida"
+author: "Nacho Zobian Massetti"
+date: "2023-02-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Natalidad en el estado de Florida
+
+En la base de datos de Nac.csv se encuentran los datos de los nacimientos por dia del año en cada uno de los distintos estados de estados unidos. El reto es, en primer lugar determinar si el numero de nacimiento en los dias de luna llena en el estado de Florida (FL) difiere de alguna forma con el resto de días. 
+
+```{r cars}
+#Leemos el fichero Nac.csv
+nac = read.csv("Nac.csv", header = FALSE, sep=";")
+#Cabeceras
+names(nac) = c("Numero-de-orden", "Estado", "Año", "Mes", "Dia", "Fecha",
+               "Dia-de-la-semana", "Numero.de-nacimientos")
+#Primeros 100 Estados
+Estados = unique(nac$Estado)
+#Florida (FL) es el estado numero 10 en orden alfabético
+Estados[10]
+```
+El estudio ha de hacerse exclusivamente en el estado de florida por lo que no tiene sentido mantener toda la base de datos con los demás estados
+
+```{r, include = FALSE }
+install.packages("dpylr")
+necesarios <- c("dpylr")
+if (length(setdiff(necesarios, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(necesarios, rownames(installed.packages())))  
+}
+```
+
